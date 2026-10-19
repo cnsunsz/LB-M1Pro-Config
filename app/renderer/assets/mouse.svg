@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 480" width="280" height="480">
+  <defs>
+    <linearGradient id="body" x1="40" y1="20" x2="240" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3a4558"/>
+      <stop offset="45%" stop-color="#1c2432"/>
+      <stop offset="100%" stop-color="#0e131b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="100" y1="80" x2="180" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7aefff"/>
+      <stop offset="100%" stop-color="#00a9e0"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#000" flood-opacity="0.55"/></filter>
+  </defs>
+  <!-- Shadow oval -->
+  <ellipse cx="140" cy="455" rx="78" ry="14" fill="#000" opacity="0.35"/>
+  <!-- Body -->
+  <g filter="url(#sh)">
+    <path fill="url(#body)" stroke="#2a3a4c" stroke-width="2" d="
+      M140 28
+      C78 28 36 78 28 148
+      C20 220 28 300 52 360
+      C76 420 108 452 140 452
+      C172 452 204 420 228 360
+      C252 300 260 220 252 148
+      C244 78 202 28 140 28 Z"/>
+    <!-- Left / right plates -->
+    <path fill="#151c28" opacity="0.55" d="M140 48 C100 48 70 80 62 120 L62 210 C90 200 120 196 140 196 Z"/>
+    <path fill="#151c28" opacity="0.4" d="M140 48 C180 48 210 80 218 120 L218 210 C190 200 160 196 140 196 Z"/>
+    <!-- Seam -->
+    <path stroke="#0a1018" stroke-width="3" d="M140 56 V210"/>
+    <!-- Scroll wheel -->
+    <rect x="126" y="88" width="28" height="56" rx="14" fill="#0a1018" stroke="url(#accent)" stroke-width="2"/>
+    <rect x="132" y="98" width="16" height="12" rx="4" fill="#c9f7ff" opacity="0.85"/>
+    <!-- DPI button -->
+    <rect x="128" y="160" width="24" height="14" rx="4" fill="#0a1018" stroke="#00a9e0" stroke-width="1.5"/>
+    <!-- Side buttons (left) -->
+    <rect x="34" y="168" width="14" height="36" rx="5" fill="#121924" stroke="#3dd6ff" stroke-width="1.2" opacity="0.9"/>
+    <rect x="36" y="212" width="12" height="28" rx="4" fill="#121924" stroke="#3dd6ff" stroke-width="1" opacity="0.65"/>
+    <!-- Markers 1-6 -->
+    <g font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#ff5a5a" text-anchor="middle">
+      <circle cx="96" cy="130" r="11" fill="#1a1010" stroke="#ff5a5a" stroke-width="1.5"/><text x="96" y="135">1</text>
+      <circle cx="184" cy="130" r="11" fill="#1a1010" stroke="#ff5a5a" stroke-width="1.5"/><text x="184" y="135">2</text>
+      <circle cx="140" cy="78" r="11" fill="#1a1010" stroke="#ff5a5a" stroke-width="1.5"/><text x="140" y="83">3</text>
+      <circle cx="48" cy="186" r="11" fill="#1a1010" stroke="#ff5a5a" stroke-width="1.5"/><text x="48" y="191">4</text>
+      <circle cx="48" cy="226" r="11" fill="#1a1010" stroke="#ff5a5a" stroke-width="1.5"/><text x="48" y="231">5</text>
+      <circle cx="140" cy="167" r="11" fill="#1a1010" stroke="#ff5a5a" stroke-width="1.5"/><text x="140" y="172">6</text>
+    </g>
+  </g>
+</svg>

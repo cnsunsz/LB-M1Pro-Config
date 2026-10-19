@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<title>LB-M1Pro 鼠标设置</title>
+<link rel="icon" type="image/png" href="assets/logo-32.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="titlebar">
+    <div class="brand"><img class="brand-logo" src="assets/logo-32.png" alt=""><span>LB-M1Pro</span><em>鼠标设置</em></div>
+    <div class="status">
+      <div class="conn" id="conn" title="连接状态">
+        <span class="dot"></span>
+        <img id="connFlag" src="assets/flag_usb.svg" alt="" width="28" height="18">
+        <span id="connText">未连接</span>
+      </div>
+      <div class="batt" id="batt" title="电量">
+        <div class="batt-shell"><div class="batt-fill" id="battFill"></div><div class="batt-bolt" id="battBolt">⚡</div></div>
+        <span id="battText">--%</span>
+      </div>
+      <button class="btn ghost sm" id="btnConnect">连接鼠标</button>
+    </div>
+    <div class="winctl">
+      <button id="wMin" title="最小化"><svg viewBox="0 0 12 12"><rect x="2" y="5.5" width="8" height="1"/></svg></button>
+      <button id="wMax" title="最大化"><svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7" fill="none" stroke="currentColor"/></svg></button>
+      <button id="wClose" class="close" title="关闭"><svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    </div>
+  </header>
+
+  <div class="body">
+    <nav class="sidebar">
+      <button class="nav active" data-tab="dpi" title="DPI">
+        <svg class="nav-ico" viewBox="0 0 24 24"><path d="M4 8h16M4 12h10M4 16h13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="14" cy="8" r="2" fill="currentColor"/><circle cx="10" cy="12" r="2" fill="currentColor"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg>
+        <span>DPI</span>
+      </button>
+      <button class="nav" data-tab="key" title="按键">
+        <svg class="nav-ico" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="9" r="2" fill="currentColor"/><path d="M8 15h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>按键</span>
+      </button>
+      <button class="nav" data-tab="macro" title="宏">
+        <svg class="nav-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>宏</span>
+      </button>
+      <button class="nav" data-tab="adv" title="高级">
+        <svg class="nav-ico" viewBox="0 0 24 24"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>高级</span>
+      </button>
+      <div class="nav-spacer"></div>
+      <div class="profile">
+        <button class="btn ghost xs" id="btnExport">导出</button>
+        <button class="btn ghost xs" id="btnImport">导入</button>
+        <input type="file" id="fileImport" accept=".json" hidden>
+      </div>
+      <div class="ver" id="verLabel">v0.2.0 · 非官方</div>
+    </nav>
+
+    <main class="content">
+      <aside class="hero">
+        <div class="hero-glow" id="heroGlow"></div>
+        <img class="hero-mouse" src="assets/mouse.png" alt="LB-M1Pro" id="heroMouse">
+        <div class="hero-meta">
+          <div class="hero-name">LB-M1Pro</div>
+          <div class="hero-sub" id="heroSub">PAW3325 · 4 档 DPI · 125–1000Hz</div>
+          <div class="hero-stats">
+            <div><b id="statDpi">1200</b><span>当前 DPI</span></div>
+            <div><b id="statRate">500</b><span>回报率 Hz</span></div>
+            <div><b id="statFw">--</b><span>固件</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="pages">
+        <div class="page active" id="page-dpi">
+          <div class="page-head"><h2>DPI 设置</h2><p>设置 DPI 档位、每档颜色与回报率。点击卡片设为当前档。</p></div>
+          <div class="card">
+            <div class="row between"><div class="label">DPI 档数</div><div class="seg" id="dpiCount"></div></div>
+            <div class="stages" id="stages"></div>
+          </div>
+          <div class="card">
+            <div class="row between"><div class="label">回报率 <small>Hz</small></div><div class="seg" id="rateSeg"></div></div>
+          </div>
+          <div class="actions">
+            <button class="btn ghost" id="dpiReset">恢复默认</button>
+            <button class="btn primary" id="dpiApply">应用到鼠标</button>
+          </div>
+        </div>
+
+        <div class="page" id="page-key">
+          <div class="page-head"><h2>按键指派</h2><p>选择一个按键，再为它指定功能。请保留至少一个键为“左键”。</p></div>
+          <div class="keylayout">
+            <div class="keylist" id="keyList"></div>
+            <div class="funpanel card" id="funPanel">
+              <div class="fun-tabs" id="funTabs"></div>
+              <div class="fun-body" id="funBody"></div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn ghost" id="keyReset">恢复默认</button>
+            <button class="btn primary" id="keyApply">应用到鼠标</button>
+          </div>
+        </div>
+
+        <div class="page" id="page-macro">
+          <div class="page-head"><h2>宏 <span class="badge exp">实验性</span></h2><p>录制键盘/鼠标动作，然后在“按键”页指派。最多 10 个宏，每宏约 158 个动作。</p></div>
+          <div class="macro-layout">
+            <div class="card macro-list">
+              <div class="row between"><div class="label">宏列表</div><button class="btn ghost xs" id="macroNew">＋ 新建宏</button></div>
+              <ul id="macroList"></ul>
+            </div>
+            <div class="card macro-edit">
+              <div class="row between">
+                <input class="name-input" id="macroName" placeholder="请选择一个宏" disabled>
+                <button class="btn ghost xs" id="macroDel" disabled>删除</button>
+              </div>
+              <div class="rec-zone" id="recZone" tabindex="0">
+                <button class="rec-btn" id="recBtn" disabled><span class="rec-dot"></span>开始录制</button>
+                <div class="rec-opts">
+                  <label><input type="radio" name="delayMode" value="auto" checked> 自动计算延时</label>
+                  <label><input type="radio" name="delayMode" value="fixed"> 固定延时
+                    <input type="number" id="fixedDelay" value="10" min="0" max="4095" class="num xs"> ms</label>
+                </div>
+              </div>
+              <div class="action-list" id="actionList"></div>
+              <div class="row between">
+                <div class="label">指派模式</div>
+                <select id="macroMode">
+                  <option value="20">执行一次</option>
+                  <option value="40">循环直到按键松开</option>
+                  <option value="10">循环直到任意键按下</option>
+                </select>
+              </div>
+              <div class="actions">
+                <button class="btn primary" id="macroWrite" disabled>写入设备</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-adv">
+          <div class="page-head"><h2>高级</h2><p>传感器与省电选项。灰色标签为“实验性/未验证”。官方驱动对本机隐藏灯光页，本工具亦不提供灯光配置。</p></div>
+          <div class="card">
+            <div class="row between"><div class="label">静默高度 (LOD) <span class="badge exp">实验性</span></div>
+              <div class="seg" id="lodSeg"></div></div>
+            <div class="row between"><div class="label">休眠时间 <span class="badge exp">实验性</span></div>
+              <select id="sleepTime"><option value="1">1 分钟</option><option value="2">2 分钟</option><option value="3" selected>3 分钟</option><option value="5">5 分钟</option><option value="10">10 分钟</option><option value="30">30 分钟</option></select></div>
+            <div class="toggles">
+              <label class="tog"><input type="checkbox" id="tLightOff"><span></span>鼠标移动时关闭灯效 <span class="badge exp">实验性</span></label>
+              <label class="tog"><input type="checkbox" id="tWake" checked><span></span>移动唤醒 <span class="badge exp">实验性</span></label>
+              <label class="tog"><input type="checkbox" id="tRipple"><span></span>纹波控制 <span class="badge exp">实验性</span></label>
+              <label class="tog"><input type="checkbox" id="tAngle"><span></span>角度捕捉 <span class="badge exp">实验性</span></label>
+              <label class="tog"><input type="checkbox" id="tMotion"><span></span>动作同步 <span class="badge exp">实验性</span></label>
+              <label class="tog"><input type="checkbox" id="tPerf"><span></span>Sensor 高性能模式 <span class="badge exp">实验性</span></label>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn primary" id="advApply">应用到鼠标</button>
+          </div>
+
+          <details class="card debug" id="debugPanel">
+            <summary>原始 HID 调试面板</summary>
+            <p class="hint">Feature Report ID = 0x0F，总长 33 字节。发送格式：<code>cmd payload...</code>（自动组帧）或完整 32 字节（勾选“原始帧”）。命令 0x0F（恢复出厂）已禁止。设置会自动保存到本机 userData。</p>
+            <div class="row gap">
+              <input class="hex" id="rawHex" placeholder="例: 07 02   或   05 41 0f 01 00 ..." spellcheck="false">
+              <label class="chk"><input type="checkbox" id="rawFramed"> 原始帧</label>
+              <button class="btn primary sm" id="rawSend">发送</button>
+              <button class="btn ghost sm" id="rawRead">仅读取</button>
+              <button class="btn ghost sm" id="rawInfo">读设备信息</button>
+              <button class="btn ghost sm" id="rawClear">清空日志</button>
+            </div>
+            <pre id="log"></pre>
+          </details>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="banner" id="banner">⚠ 非官方逆向配置工具 · 实验性命令请先用调试面板验证 · 恢复出厂已禁用 · 使用风险自负</div>
+</div>
+<script src="protocol.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

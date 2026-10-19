@@ -1,0 +1,20 @@
+node_modules/
+dist-build/
+dist/*.exe
+dist/exe_part_*
+dist/LB-M1Pro*
+*.zip
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-error.log*
+out/
+release/
+*.asar
+# local RE / vendor dumps
+src/
+re/
+venv/
+m1pro.zip
+*.exe
+!docs/

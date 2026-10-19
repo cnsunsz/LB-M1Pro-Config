@@ -1,0 +1,74 @@
+{
+  "name": "lb-m1pro-config",
+  "productName": "LB-M1Pro鼠标设置",
+  "version": "0.2.0",
+  "description": "LB-M1Pro 鼠标第三方配置工具（基于 WebHID）",
+  "main": "main.js",
+  "author": "cnsun",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable --x64"
+  },
+  "build": {
+    "appId": "local.cnsun.lbm1pro",
+    "productName": "LB-M1Pro鼠标设置",
+    "executableName": "LB-M1Pro-Config",
+    "artifactName": "LB-M1Pro-Config.exe",
+    "directories": {
+      "output": "../dist-build",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "package.json",
+      "!renderer/**/*.map",
+      "!**/*.md",
+      "!**/mouse_nr.png",
+      "!**/mouse.ico"
+    ],
+    "asar": true,
+    "compression": "maximum",
+    "electronLanguages": [
+      "zh-CN",
+      "en-US"
+    ],
+    "npmRebuild": false,
+    "nodeGypRebuild": false,
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "LB-M1Pro-Config.exe",
+      "requestExecutionLevel": "user",
+      "unpackDirName": "LB-M1Pro-Config"
+    },
+    "afterPack": "./afterPack.js"
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "25.1.8"
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cnsunsz/LB-M1Pro-Config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cnsunsz/LB-M1Pro-Config/issues"
+  },
+  "homepage": "https://github.com/cnsunsz/LB-M1Pro-Config#readme"
+}
