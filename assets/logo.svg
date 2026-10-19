@@ -1,82 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="LB-M1Pro Config">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="LB-M1Pro Config v3">
   <defs>
-    <linearGradient id="bg" x1="64" y1="40" x2="448" y2="480" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#182433"/>
-      <stop offset="50%" stop-color="#0d141d"/>
-      <stop offset="100%" stop-color="#070b11"/>
+    <linearGradient id="bg" x1="48" y1="32" x2="464" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a2736"/><stop offset="55%" stop-color="#0c131c"/><stop offset="100%" stop-color="#06090e"/>
     </linearGradient>
-    <linearGradient id="cyan" x1="130" y1="110" x2="390" y2="410" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#9af3ff"/>
-      <stop offset="40%" stop-color="#00bceb"/>
-      <stop offset="100%" stop-color="#0077b5"/>
+    <linearGradient id="shell" x1="170" y1="80" x2="350" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00d4ff"/><stop offset="55%" stop-color="#0099c9"/><stop offset="100%" stop-color="#005f88"/>
     </linearGradient>
-    <linearGradient id="wheel" x1="242" y1="188" x2="270" y2="246" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#eefcff"/>
-      <stop offset="100%" stop-color="#4ad2f5"/>
+    <linearGradient id="inner" x1="190" y1="110" x2="330" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2a3544"/><stop offset="100%" stop-color="#121820"/>
+    </linearGradient>
+    <linearGradient id="wheel" x1="240" y1="140" x2="272" y2="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#7ae0ff"/>
     </linearGradient>
     <linearGradient id="rim" x1="40" y1="40" x2="470" y2="470" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#5ce1ff" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#145f82" stop-opacity="0.4"/>
+      <stop offset="0%" stop-color="#5ce1ff" stop-opacity="0.95"/><stop offset="100%" stop-color="#145f82" stop-opacity="0.4"/>
     </linearGradient>
-    <linearGradient id="badgeFill" x1="318" y1="338" x2="436" y2="408" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#102030"/>
-      <stop offset="100%" stop-color="#0a121c"/>
-    </linearGradient>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="12" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
+  <rect x="22" y="22" width="468" height="468" rx="108" fill="url(#bg)"/>
+  <rect x="22" y="22" width="468" height="468" rx="108" fill="none" stroke="url(#rim)" stroke-width="7"/>
 
-  <!-- Rounded app tile -->
-  <rect x="22" y="22" width="468" height="468" rx="112" fill="url(#bg)"/>
-  <rect x="22" y="22" width="468" height="468" rx="112" fill="none" stroke="url(#rim)" stroke-width="7"/>
+  <!-- Thick cyan outline ring (16px-legible) around accurate shape -->
+  <path fill="url(#shell)" filter="url(#glow)" d="
+    M256 70
+    C224 70 196 82 176 106
+    C150 136 140 172 138 204
+    C136 236 136 258 134 276
+    C126 288 120 304 118 322
+    C116 344 124 366 138 386
+    C160 422 202 456 256 466
+    C310 456 352 422 374 386
+    C388 366 396 344 394 322
+    C392 300 388 278 384 256
+    C380 224 378 190 372 168
+    C364 132 340 100 310 82
+    C290 72 272 70 256 70 Z"/>
 
-  <!-- Ambient glow -->
-  <circle cx="256" cy="240" r="150" fill="#00a9e0" opacity="0.12" filter="url(#glow)"/>
+  <!-- Inner dark shell inset -->
+  <path fill="url(#inner)" d="
+    M256 92
+    C230 92 208 102 192 120
+    C170 144 162 174 160 202
+    C158 230 158 250 156 266
+    C150 276 146 288 144 302
+    C142 320 148 338 158 354
+    C176 384 210 410 256 418
+    C302 410 336 384 354 354
+    C364 338 370 320 368 302
+    C366 284 362 266 358 248
+    C354 220 352 194 348 176
+    C342 148 324 124 302 108
+    C286 98 270 92 256 92 Z"/>
 
-  <!-- Mouse silhouette -->
-  <path fill="url(#cyan)" d="
-    M256 108
-    C196 108 150 146 138 206
-    C128 258 132 316 154 360
-    C176 404 214 430 256 430
-    C298 430 336 404 358 360
-    C380 316 384 258 374 206
-    C362 146 316 108 256 108 Z"/>
+  <!-- Split plates cue -->
+  <path fill="none" stroke="#5ce1ff" stroke-width="3" stroke-opacity="0.35"
+        d="M256 108 L256 248"/>
+  <path fill="none" stroke="#0a1018" stroke-width="5" stroke-opacity="0.5" stroke-linecap="round"
+        d="M168 250 C210 244 236 242 256 242 C276 242 302 244 344 250"/>
 
-  <!-- Palm darken -->
-  <ellipse cx="256" cy="360" rx="78" ry="42" fill="#061018" opacity="0.22"/>
+  <!-- Wheel oversized for small sizes -->
+  <rect x="240" y="132" width="32" height="80" rx="16" fill="url(#wheel)"/>
+  <rect x="243" y="138" width="5" height="68" rx="2" fill="#fff"/>
+  <rect x="264" y="138" width="5" height="68" rx="2" fill="#fff"/>
 
-  <!-- Split / seam -->
-  <path fill="#071018" opacity="0.42" d="
-    M245 164 C245 164 249 152 256 152 C263 152 267 164 267 164
-    L267 304 C267 316 262 324 256 324 C250 324 245 316 245 304 Z"/>
+  <!-- DPI -->
+  <rect x="245" y="222" width="22" height="18" rx="5" fill="#9af3ff"/>
+  <rect x="249" y="226" width="14" height="10" rx="3" fill="#00a9e0"/>
 
-  <!-- Scroll wheel -->
-  <rect x="241" y="186" width="30" height="62" rx="15" fill="url(#wheel)"/>
-  <rect x="248" y="198" width="16" height="9" rx="3" fill="#ffffff" opacity="0.85"/>
-  <rect x="248" y="214" width="16" height="5" rx="2" fill="#0a1a24" opacity="0.25"/>
+  <!-- Side buttons thicker -->
+  <rect x="122" y="274" width="26" height="30" rx="10" fill="#7aefff" opacity="0.95"/>
+  <rect x="120" y="310" width="28" height="34" rx="11" fill="#5ce1ff" opacity="0.7"/>
 
-  <!-- DPI nub -->
-  <circle cx="256" cy="282" r="10" fill="#eafcff" opacity="0.8"/>
-  <circle cx="256" cy="282" r="4" fill="#00a9e0"/>
-
-  <!-- Side buttons -->
-  <path fill="#eafcff" opacity="0.55" d="M156 226 C149 246 149 270 154 292 C163 286 168 270 168 252 C168 236 163 222 156 226 Z"/>
-  <path fill="#eafcff" opacity="0.28" d="M356 226 C363 246 363 270 358 292 C349 286 344 270 344 252 C344 236 349 222 356 226 Z"/>
-
-  <!-- M1 badge -->
-  <rect x="316" y="336" width="122" height="74" rx="20" fill="url(#badgeFill)" stroke="#00b7ea" stroke-width="3.5"/>
-  <!-- letter M -->
-  <path fill="#7aefff" d="
-    M332 390 V352 H342 L354 376 L366 352 H376 V390 H366 V368 L354 388 H350 L338 368 V390 Z"/>
-  <!-- digit 1 -->
-  <path fill="#00d0ff" d="
-    M392 390 V352 H404 L414 360 V390 H404 V368 L398 364 H392 Z"/>
-
-  <!-- Corner tech ticks -->
-  <path d="M70 118 L70 84 L104 84" fill="none" stroke="#3dd6ff" stroke-width="5.5" stroke-linecap="round" opacity="0.55"/>
-  <path d="M442 394 L442 428 L408 428" fill="none" stroke="#3dd6ff" stroke-width="5.5" stroke-linecap="round" opacity="0.45"/>
+  <!-- Tiny LB wordmark (original, not vendor logo) -->
+  <text x="256" y="400" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif"
+        font-size="42" font-weight="800" fill="#9af3ff" opacity="0.9" letter-spacing="2">LB</text>
 </svg>
