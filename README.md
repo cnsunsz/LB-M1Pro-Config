@@ -36,7 +36,7 @@
 
 到 [Releases](https://github.com/cnsunsz/LB-M1Pro-Config/releases) 下载：
 
-- `LB-M1Pro-Config-v0.2.1.exe` — 单文件便携版（约 63–70 MiB，无需安装）
+- `LB-M1Pro-Config-v0.2.2.exe` — 单文件便携版（约 63–70 MiB，无需安装）
 
 首次启动会自解压，可能稍慢。程序**未签名**，SmartScreen 可能提示「未知发布者」，请选择仍要运行。
 
@@ -73,7 +73,7 @@ npm run dist
 - 对比稿：`docs/logo_options.png`（含参考图 + v1/v2/v3）
 - 选用 **v3**：粗青色描边 + 暗壳，16/32px 仍可辨认侧键/滚轮/DPI 与 LB 字标
 - 反映的外形要点：前部分体键缝、镀铬感滚轮竖条、滚轮后方矩形 DPI 键、左侧双侧键凸起、中段收腰与后掌托鼓起
-界面中的鼠标示意图亦为原创 SVG，**不包含**官方驱动素材。
+界面左侧产品图为原创 SVG/PNG（`app/renderer/assets/mouse.svg`），按 `mouse_nr.png` 俯视比例重绘磨砂黑质感（分体键缝、镀铬滚轮竖条、DPI 键、左侧 4/5 侧键）；对比稿见 `docs/mouse_compare.png`。**不包含**官方驱动像素。
 
 ## License
 

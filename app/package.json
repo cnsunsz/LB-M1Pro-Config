@@ -1,7 +1,7 @@
 {
   "name": "lb-m1pro-config",
   "productName": "LB-M1Pro鼠标设置",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "LB-M1Pro 鼠标第三方配置工具（基于 WebHID）",
   "main": "main.js",
   "author": "cnsun",
